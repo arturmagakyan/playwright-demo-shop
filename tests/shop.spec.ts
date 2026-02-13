@@ -1,4 +1,5 @@
 import { test } from './fixtures';
+import { faker } from '@faker-js/faker'
 
 test.describe('E2E Shopping Flow', () => {
   test('User can complete a purchase', async ({ loginPage, inventoryPage, cartPage, checkoutPage }) => {
@@ -10,8 +11,12 @@ test.describe('E2E Shopping Flow', () => {
 
     await cartPage.checkItemVisible('Sauce Labs Backpack');
     await cartPage.clickCheckout();
+    
+    const firstName = faker.person.firstName();
+    const lastName = faker.person.lastName();
+    const zipCode = faker.location.zipCode();
 
-    await checkoutPage.fillDetails('Artur', 'QA', '123456');
+    await checkoutPage.fillDetails(firstName,lastName,zipCode);
     await checkoutPage.finishOrder();
     
     await checkoutPage.expectSuccessMessage();
