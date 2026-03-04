@@ -3,12 +3,14 @@ import { LoginPage } from '../pages/LoginPage';
 import { InventoryPage } from '../pages/InventoryPage';
 import { CheckoutPage } from '../pages/CheckoutPage';
 import { CartPage } from '../pages/CartPage';
+import { ProductDetailPage } from '../pages/ProductDetailPage';
 
 type MyFixtures = {
   loginPage: LoginPage;
   inventoryPage: InventoryPage;
   checkoutPage: CheckoutPage;
   cartPage: CartPage;
+  ProductDetailPage: ProductDetailPage;
 };
 
 export const test = base.extend<MyFixtures>({
