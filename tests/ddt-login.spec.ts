@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
+import * as allure from 'allure-js-commons';
 
 const userCredentials = [
    {
@@ -24,6 +25,12 @@ test.describe('Data-Driven Login Scenarios', () => {
     for (const data of userCredentials){
 
         test(`Login attempt: ${data.testName}`, async ({ page }) => {
+
+            await allure.epic('Auth & Security'); 
+            await allure.feature('Login Functionality'); 
+            await allure.story(data.testName); 
+            await allure.tags('smoke', 'authentication'); 
+            await allure.severity('critical'); 
 
             const loginPage = new LoginPage(page);
 
